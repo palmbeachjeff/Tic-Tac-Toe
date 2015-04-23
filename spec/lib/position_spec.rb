@@ -61,6 +61,11 @@ describe Position do
 
   end
 
+  context "#best_move" do
+    it { expect(Position.new(%w(x x - - - - - - -), "x").best_move).to eq(2) }
+    it { expect(Position.new(%w(o o - - - - - - -), "o").best_move).to eq(2) }
+  end
+
 
 
 

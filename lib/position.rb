@@ -36,9 +36,16 @@ class Position
     return 100 if win?("x")
     return -100 if win?("o")
     return 0 if possible_moves.empty?
-    possible_moves.map { |index| move(index).gameAI(depth+1)}.send(xturn(:max, :min)) + xturn(-depth,depth)
+    @@gameAI ||= {}
+    value = @@gameAI[board]
+    return value if value
+    @@gameAI[@board] = possible_moves.map { |index| move(index).gameAI(depth+1)}.send(xturn(:max, :min)) + xturn(-depth,depth)
   end
 
+  def best_move
+    possible_moves.send(xturn(:max_by, :min_by)) { |index| move(index).gameAI }
+  end
+  
 
 
 
