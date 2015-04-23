@@ -4,6 +4,7 @@ require "rspec/its"
 describe Position do 
   its(:board) { should == %w(-)*9 }
   its(:turn) { should == "x" }  
+  
   context ".new(board, turn)" do
     subject {Position.new(%w(x - - - - - - - - ), "o") }
     its(:board) { should == %w(x - - - - - - - -) }
@@ -48,6 +49,18 @@ describe Position do
                                 - o -
                                 o - -)).win?("o")).to be_truthy }
   end
+
+  context "#gameAI" do
+    it { expect(Position.new(%w(x x x - - - - - -), "x").gameAI).to eq(100) }
+    it { expect(Position.new(%w(o o o - - - - - -), "o").gameAI).to eq(-100) }
+    it { expect(Position.new(%w(x o x x o x o x o), "o").gameAI).to eq(0) }
+    it { expect(Position.new(%w(x x - - - - - - -), "x").gameAI).to eq(99) }
+    it { expect(Position.new(%w(o o - - - - - - -), "o").gameAI).to eq(-99) }
+    it { expect { timeout(2) {Position.new.gameAI }}.not_to raise_error }
+    
+
+  end
+
 
 
 

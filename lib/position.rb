@@ -30,7 +30,13 @@ class Position
     rows.transpose.any? {|col| col.all? { |p| p==turn} } ||
     rows.map.with_index.all? { |row,i| row[i]== turn } ||
     rows.map.with_index.all? { |row,i| row[DIMENSION-1-i]== turn }
+  end
 
+  def gameAI(depth=1)
+    return 100 if win?("x")
+    return -100 if win?("o")
+    return 0 if possible_moves.empty?
+    possible_moves.map { |index| move(index).gameAI(depth+1)}.send(xturn(:max, :min)) + xturn(-depth,depth)
   end
 
 
