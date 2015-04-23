@@ -7,6 +7,7 @@ GEM
     diff-lcs (1.2.5)
     ffi (1.9.8)
     formatador (0.2.5)
+    gosu (0.8.7.2)
     guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -48,6 +49,9 @@ GEM
     rspec-expectations (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.2.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
@@ -62,6 +66,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  gosu
   guard
   guard-rspec
   rspec
+  rspec-its
