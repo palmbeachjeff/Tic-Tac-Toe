@@ -23,6 +23,30 @@ describe Position do
 
   context "#win?" do
     it {expect(Position.new.win?("x")).to be_falsey}
+     it {expect(Position.new(%w(x x x
+                                - - -
+                                - - -)).win?("x")).to be_truthy }
+     it {expect(Position.new(%w(- - -
+                                x x x
+                                - - -)).win?("x")).to be_truthy }
+     it {expect(Position.new(%w(- - -
+                                - - -
+                                x x x)).win?("x")).to be_truthy }
+     it {expect(Position.new(%w(o - -
+                                o - -
+                                o - -)).win?("o")).to be_truthy }
+     it {expect(Position.new(%w(- o -
+                                - o -
+                                - o -)).win?("o")).to be_truthy }
+     it {expect(Position.new(%w(- - o
+                                - - o
+                                - - o)).win?("o")).to be_truthy }
+     it {expect(Position.new(%w(o - -
+                                - o -
+                                - - o)).win?("o")).to be_truthy }
+     it {expect(Position.new(%w(- - o
+                                - o -
+                                o - -)).win?("o")).to be_truthy }
   end
 
 

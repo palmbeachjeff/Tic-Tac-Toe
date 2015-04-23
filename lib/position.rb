@@ -25,7 +25,12 @@ class Position
   end
 
   def win?(turn)
-    
+    rows = @board.each_slice(DIMENSION).to_a
+    rows.any? { |row| row.all? { |p| p==turn } } ||
+    rows.transpose.any? {|col| col.all? { |p| p==turn} } ||
+    rows.map.with_index.all? { |row,i| row[i]== turn } ||
+    rows.map.with_index.all? { |row,i| row[DIMENSION-1-i]== turn }
+
   end
 
 
