@@ -58,7 +58,7 @@ end
       width, 500, black,
       0, 500, black )
 
-    @mfont.draw(txt(width-@mfont.text_width(txt))/2, width/2-100, 0)
+    @mfont.draw(txt, (width-@mfont.text_width(txt))/2, width/2-100, 0)
 
 
   end
